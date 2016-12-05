@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+        *{padding:0;margin:0;}
+        html {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        h1 {
+            width: 250px;
+            border: 1px solid lightgreen;
+            height: 45px;
+            border-radius: 20px;
+            box-shadow:-10px -3px 5px 2px green;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            margin-left: -125px;
+            color: skyblue;
+            background-color: rgba(242,239,240,.6);
+            text-align: center;
+            font-weight: 600;
+            font-size: 35px;
+            font-style: italic;
+            line-height: 45px;
+        }
+
+        body>a {
+            text-decoration: none;
+            position: absolute;
+            top: 560px;
+            left: 50%;
+            margin-left: 570px;
+            border: 2px solid red;
+            border-radius: 15px;
+            font-size: 25px;
+            font-weight:700;
+            display: block;
+            background-color: #C6F9FB;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+        }
+        body>.pre {margin-left: -670px;}
+        body>.firstpage{top:25px; left:200px; margin-left: 0;}
+        ul{list-style: none;}
+        img{width: 100%;height: 100%;}
+        button {width: 100px;height: 40px;background:pink;border: 2px solid #fff; border-radius: 10px;position:absolute;top: 490px;font-size: 30px;font-weight:700; color: red; }
+        #leftBtn{left:330px; }
+        #rightBtn{left: 930px;}
+        .stage{width: 450px;height: 300px; position:absolute;left: 50%;top: 50%; margin-left: -225px; margin-top: -150px;}
+        ul{perspective:1000px;position:relative;}
+        .stage>ul>li{position: absolute; top:0; left:0;}
+        .stageA{transform:rotateY(40deg) translateX(200px) translateZ(200px) scale(0.2);z-index: 555;}
+        .stageE{transform:rotateY(-40deg) translateX(-200px) translateZ(200px) scale(0.2);z-index: 555;}
+        .stageB{transform:rotateY(40deg) translateX(500px) translateZ(200px) scale(0.7);z-index: 777;}
+        .stageD{transform:rotateY(-40deg) translateX(-500px) translateZ(200px) scale(0.7);z-index: 777;}
+        .stageC{transform:scale(0.9);z-index: 999;}
+    </style>
+</head>
+<body>
+    <h1>个人影集</h1>
+    <a href="myself.html" class="firstpage">To首页</a>
+    <div class="stage">
+        <ul id="stage-in">
+            <li class="stageA"><img src="img/show/mytupian1.png" alt="" /></li>
+            <li class="stageB"><img src="img/show/mytupian2.png" alt="" /></li>
+            <li class="stageC" ><img src="img/show/mytupian3.png" alt="" /></li>
+            <li class="stageD" ><img src="img/show/mytupian4.png" alt="" /></li>
+            <li class="stageE"><img src="img/show/mytupian5.png" alt="" /></li>
+        </ul>
+    </div>
+    <button id="leftBtn"><</button>
+    <button id="rightBtn">></button>
+    <a href="myshow2.html" class="pre">上一页</a>
+    <a href="end.html">下一页</a>
+
+    <script type="text/javascript">
+        var leftBtn=document.getElementById("leftBtn")
+        var rightBtn=document.getElementById("rightBtn")
+        var arr=["stageA","stageB","stageC","stageD","stageE"]
+        var lis=document.getElementById("stage-in").getElementsByTagName("li")
+
+        rightBtn.onclick=function(){
+            var lastOne=arr.pop()
+                arr.unshift(lastOne)
+            for(var i=0;i<lis.length;i++){
+                lis[i].className=arr[i]
+            }
+        }
+        leftBtn.onclick=function(){
+            var firstOne=arr.shift()
+                arr.push(firstOne)
+            for(var i=0;i<lis.length;i++){
+                lis[i].className=arr[i]
+            }
+        }
+    </script>
+</body>
+</html>
